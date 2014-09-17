@@ -1,3 +1,5 @@
+// Run this as Java app to run the program on a desktop
+
 package com.mathgaming.runner.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
