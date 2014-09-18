@@ -1,9 +1,4 @@
-// Run this as Java app to run the program on a desktop
-// Testing git on home machine
-
-// PULL THIS TEST
-
-//Kevin test
+// Run this as Java app to run the program on a desktop -JTO
 
 package com.mathgaming.runner.desktop;
 
@@ -15,8 +10,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Runner Game";
-        config.width = 408;
-        config.height = 272;
+        config.width = 408; //Need to make sure the width and height are (cont)
+        config.height = 272; // standard for a portrait android game -JTO
         new LwjglApplication(new RunnerGame(), config);
 	}
 }
