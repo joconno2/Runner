@@ -1,8 +1,7 @@
 // Run this as Java app to run the program on a desktop
 // Testing git on home machine
-//Testing home branch
 
-//Kevin test
+// PULL THIS TEST
 
 package com.mathgaming.runner.desktop;
 
