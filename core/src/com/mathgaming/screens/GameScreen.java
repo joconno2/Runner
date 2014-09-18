@@ -1,8 +1,10 @@
 package com.mathgaming.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.mathgaming.gameworld.GameRenderer;
 import com.mathgaming.gameworld.GameWorld;
+import com.mathgaming.rhelpers.InputHandler;
 
 public class GameScreen implements Screen{
 	
@@ -10,8 +12,17 @@ public class GameScreen implements Screen{
 	private GameRenderer renderer;
 
 	public GameScreen(){
-		world = new GameWorld();
+		float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();      
+        float gameWidth = 408;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+        
+        int midPointY = (int) (gameHeight / 2); //havent checked the math on these -JTO
+        
+		world = new GameWorld(midPointY);  // I feel like I forgot to capitalize P somewhere.. -JTO
 		renderer = new GameRenderer(world);
+		
+		Gdx.input.setInputProcessor(new InputHandler(world.getRunActor())); // Set up the Input Handler -JTO
 	}
 	
 	@Override

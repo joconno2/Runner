@@ -6,7 +6,7 @@ public class GameWorld {
 	private RunActor actor;
 	
 	public GameWorld(int midpointY){
-		actor = new RunActor(40.0f,140.0f,20,20);
+		actor = new RunActor(40.0f,140.0f,20,20); //Starts the main character and gives it a size
 	}
 
     public void update(float delta) {
