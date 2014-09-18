@@ -2,7 +2,7 @@ package com.mathgaming.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Actor {
+public class RunActor {
 
 	private Vector2 position;
     private Vector2 velocity;
@@ -11,7 +11,7 @@ public class Actor {
     private int width;
     private int height;
     
-    public Actor(float x, float y, int width, int height){
+    public RunActor(float x, float y, int width, int height){
     	this.width = width;
         this.height = height;
         position = new Vector2(x, y);
@@ -20,9 +20,9 @@ public class Actor {
     }
     
     public void update(float delta){
-    	velocity.add(acceleration.cpy().scl(delta));
+    	velocity.add(acceleration.cpy().scl(delta)); // Gravity
 
-        if (velocity.y > 200) {
+        if (velocity.y > 200) {    // Terminal Velocity
             velocity.y = 200;
         }
 
