@@ -10,8 +10,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Runner Game";
-        config.width = 408; //Need to make sure the width and height are (cont)
-        config.height = 272; // standard for a portrait android game -JTO
+        config.width = 960; // Need to make sure the width and height are (cont)
+        config.height = 640; // standard for a portrait android game -JTO
         new LwjglApplication(new RunnerGame(), config);
 	}
 }
