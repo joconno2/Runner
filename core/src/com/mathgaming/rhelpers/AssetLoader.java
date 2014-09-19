@@ -12,7 +12,7 @@ public class AssetLoader {
 	public static TextureRegion bg, ground, characterStepOne, characterStepTwo,
 								platformSmall, platformMedium, platformLarge;
 	
-	public static Animation characterAnimation;
+	public static Animation runningAnimation;
 	
 	public static void load(){
 		
@@ -20,14 +20,23 @@ public class AssetLoader {
 		texture = new Texture(Gdx.files.internal("data/spritesheet.png"));
 		texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
-		/*
-		 * Start filling in texture regions once spritesheet is built, as follows:
-		 * 
-		 * bg = new TextureRegion(texture, 0, 0, 136, 43);
-		 * bg.flip(false, true);
-		 * 
-		 * -JTO
-		 */
+		// TextureRegion x y width height -JTO
+		bg = new TextureRegion(texture, 0, 0, 230, 62);
+		
+		// Large Platform
+		platformLarge = new TextureRegion(texture, 0, 89, 84, 11);
+
+		// Import the running character sprites -JTO
+		characterStepOne = new TextureRegion(texture, 210, 64, 16, 21);
+		characterStepTwo = new TextureRegion(texture, 233, 64, 16, 21);
+		
+		// build the runnning animation -JTO
+		TextureRegion[] running = {characterStepOne, characterStepTwo};
+		runningAnimation = new Animation(0.12f, running); //0.1f is the speed of animation -JTO
+		runningAnimation.setPlayMode(Animation.PlayMode.LOOP);
+		
+		
+		 
 		
 	}
 	
