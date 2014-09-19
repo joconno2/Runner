@@ -22,13 +22,17 @@ public class AssetLoader {
 		
 		// TextureRegion x y width height -JTO
 		bg = new TextureRegion(texture, 0, 0, 230, 62);
+		bg.flip(false, true);
 		
 		// Large Platform
 		platformLarge = new TextureRegion(texture, 0, 89, 84, 11);
+		platformLarge.flip(false, true);
 
 		// Import the running character sprites -JTO
 		characterStepOne = new TextureRegion(texture, 210, 64, 16, 21);
+		characterStepOne.flip(false, true);
 		characterStepTwo = new TextureRegion(texture, 233, 64, 16, 21);
+		characterStepTwo.flip(false, true);
 		
 		// build the runnning animation -JTO
 		TextureRegion[] running = {characterStepOne, characterStepTwo};
