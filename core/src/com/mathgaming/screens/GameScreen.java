@@ -10,6 +10,7 @@ public class GameScreen implements Screen{
 	
 	private GameWorld world;
 	private GameRenderer renderer;
+	private float runTime;
 
 	public GameScreen(){
 		float screenWidth = Gdx.graphics.getWidth();
@@ -20,15 +21,16 @@ public class GameScreen implements Screen{
         int midPointY = (int) (gameHeight / 2); //havent checked the math on these -JTO
         
 		world = new GameWorld(midPointY);  // I feel like I forgot to capitalize P somewhere.. -JTO
-		renderer = new GameRenderer(world);
+		renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 		
 		Gdx.input.setInputProcessor(new InputHandler(world.getRunActor())); // Set up the Input Handler -JTO
 	}
 	
 	@Override
 	public void render(float delta) {
+		runTime += delta;
 		world.update(delta);
-		renderer.render();
+		renderer.render(runTime);
 	}
 
 	@Override

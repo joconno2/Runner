@@ -16,21 +16,21 @@ public class RunActor {
         this.height = height;
         position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, 460);
+        acceleration = new Vector2(0, -400);
     }
     
     public void update(float delta){
     	velocity.add(acceleration.cpy().scl(delta)); // Gravity
 
-        if (velocity.y > 200) {    // Terminal Velocity
-            velocity.y = 200;
+        if (velocity.y < -1000) {    // Terminal Velocity
+            velocity.y = -10800;
         }
 
         position.add(velocity.cpy().scl(delta));
     }
     
     public void jump(){
-    	velocity.y = -100;
+    	velocity.y = 400;
     }
 	
     public float getX() {
