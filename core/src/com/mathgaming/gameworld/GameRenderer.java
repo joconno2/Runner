@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.mathgaming.gameobjects.Platform;
 import com.mathgaming.gameobjects.RunActor;
 import com.mathgaming.rhelpers.AssetLoader;
 
@@ -19,6 +20,7 @@ public class GameRenderer {
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batcher;
     private RunActor runActor;
+    private Platform largePlatform1;
     
     private int midPointY;
     private int gameHeight;
@@ -82,7 +84,7 @@ public class GameRenderer {
         		runActor.getX(), runActor.getY(),  runActor.getWidth()*4, runActor.getHeight()*4);
         
         //test
-        batcher.draw(platformLarge, 10, 560, 84*4, 10*4);
+        batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 84*4, 10*4);
         
         batcher.end();
         
@@ -96,6 +98,7 @@ public class GameRenderer {
 	
 	private void initGameObjects() {
         runActor = myWorld.getRunActor();
+        largePlatform1 = myWorld.getLargePlatform1();
     }
 
     private void initAssets() {

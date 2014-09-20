@@ -1,5 +1,7 @@
 package com.mathgaming.gameobjects;
 
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Platform {
@@ -11,12 +13,15 @@ public class Platform {
 
 	protected boolean isScrolledLeft;
 	
+	protected Rectangle boundingBox;
+	
 	public Platform(float x, float y, int width, int height, float scrollSpeed){
 		position = new Vector2(x,y);
 		velocity = new Vector2(scrollSpeed, 0);
 		this.width = width;
 		this.height = height;
 		isScrolledLeft = false;
+		boundingBox = new Rectangle(x,y,width,height);
 	}
 	
 	public void reset(float newX){
@@ -43,5 +48,20 @@ public class Platform {
     public int getHeight() {
         return height;
     }
+
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Rectangle getBoundingBox(){
+		return boundingBox;
+	}
+	
+	public boolean collides(RunActor runActor){
+		if(position.x < runActor.getX()+runActor.getWidth())
+			return Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox());
+		return false;
+	}
 	
 }

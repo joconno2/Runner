@@ -39,6 +39,10 @@ public class RunActor {
         
     }
     
+    public void stop(){
+    	velocity.y = 0;
+    }
+    
     public void jump(){
     	velocity.y = -600;
     }
