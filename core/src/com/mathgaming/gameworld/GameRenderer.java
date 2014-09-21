@@ -25,7 +25,8 @@ public class GameRenderer {
 
     
     private int midPointY;
-    private int gameHeight;
+    @SuppressWarnings("unused")
+	private int gameHeight;
     
     public static TextureRegion bg, ground, characterStepOne, characterStepTwo,
 	platformSmall, platformMedium, platformLarge;

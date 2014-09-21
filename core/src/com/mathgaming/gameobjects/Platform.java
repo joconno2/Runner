@@ -24,8 +24,19 @@ public class Platform {
 		boundingBox = new Rectangle(x,y,width,height);
 	}
 	
-	public void reset(float newX){
+	public void update(float delta) {
+		position.add(velocity.cpy().scl(delta));
+		boundingBox.x = position.x;
+		boundingBox.y = position.y;
+		
+		if(position.x + width < 0)
+			isScrolledLeft = true;
+		
+	}
+	
+	public void reset(float newX, float newY){
 		position.x = newX;
+		position.y = newY;
 		isScrolledLeft = false;
 	}
 	
@@ -49,10 +60,9 @@ public class Platform {
         return height;
     }
 
-	public void update(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean isScrolledLeft(){
+    	return isScrolledLeft;
+    }
 	
 	public Rectangle getBoundingBox(){
 		return boundingBox;

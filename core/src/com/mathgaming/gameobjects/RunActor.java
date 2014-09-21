@@ -69,4 +69,9 @@ public class RunActor {
     public Rectangle getBoundingBox(){
     	return boundingBox;
     }
+
+	public void fall() {
+		if(velocity.y == 0)
+			velocity.y += 100;
+	}
 }
