@@ -9,6 +9,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+<<<<<<< HEAD
+=======
+import com.mathgaming.gameobjects.Platform;
+>>>>>>> origin/jim-branch
 import com.mathgaming.gameobjects.RunActor;
 import com.mathgaming.rhelpers.AssetLoader;
 
@@ -19,6 +23,10 @@ public class GameRenderer {
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batcher;
     private RunActor runActor;
+<<<<<<< HEAD
+=======
+    private Platform largePlatform1;
+>>>>>>> origin/jim-branch
     
     private int midPointY;
     private int gameHeight;
@@ -82,13 +90,24 @@ public class GameRenderer {
         		runActor.getX(), runActor.getY(),  runActor.getWidth()*4, runActor.getHeight()*4);
         
         //test
+<<<<<<< HEAD
         batcher.draw(platformLarge, 10, 560, 84*4, 10*4);
+=======
+        batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 
+        		largePlatform1.getWidth(), largePlatform1.getHeight());
+>>>>>>> origin/jim-branch
         
         batcher.end();
         
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
+<<<<<<< HEAD
         //shapeRenderer.rect(runActor.getBoundingBox().x, runActor.getBoundingBox().y, 15*4, 20*4);
+=======
+        // Debugging -JTO
+        //shapeRenderer.rect(runActor.getBoundingBox().x, runActor.getBoundingBox().y, 15*4, 20*4);
+        //shapeRenderer.rect(largePlatform1.getX(), largePlatform1.getY(), 84*4, 10*4);
+>>>>>>> origin/jim-branch
         shapeRenderer.end();
        
 		
@@ -96,6 +115,10 @@ public class GameRenderer {
 	
 	private void initGameObjects() {
         runActor = myWorld.getRunActor();
+<<<<<<< HEAD
+=======
+        largePlatform1 = myWorld.getLargePlatform1();
+>>>>>>> origin/jim-branch
     }
 
     private void initAssets() {
