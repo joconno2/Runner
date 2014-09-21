@@ -1,22 +1,6 @@
 package com.mathgaming.gameworld;
 
-<<<<<<< HEAD
 import com.mathgaming.gameobjects.RunActor;
-
-public class GameWorld {
-	private RunActor actor;
-	
-	public GameWorld(int midpointY){
-		actor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size
-	}
-
-    public void update(float delta) {
-    	actor.update(delta);
-    }
-
-    public RunActor getRunActor() {
-        return actor;
-=======
 import com.mathgaming.gameobjects.Platform;
 import com.mathgaming.gameobjects.RunActor;
 import com.mathgaming.gameobjects.ScrollHandler;
@@ -43,7 +27,6 @@ public class GameWorld {
     
     public Platform getLargePlatform1(){
     	return largePlatform1;
->>>>>>> origin/jim-branch
     }
 
 }
