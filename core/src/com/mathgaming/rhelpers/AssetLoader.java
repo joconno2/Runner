@@ -27,6 +27,10 @@ public class AssetLoader {
 		// Large Platform
 		platformLarge = new TextureRegion(texture, 0, 89, 84, 11);
 		platformLarge.flip(false, true);
+		
+		// Ground
+		ground = new TextureRegion(texture, 0, 129, 250, 20);
+		ground.flip(false, true);
 
 		// Import the running character sprites -JTO
 		characterStepOne = new TextureRegion(texture, 210, 64, 16, 21);
