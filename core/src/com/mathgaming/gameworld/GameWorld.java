@@ -11,14 +11,19 @@ public class GameWorld {
 	private Platform largePlatform1;
 	
 	public GameWorld(int midpointY){
-		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size
-		largePlatform1 = new Platform(10, 560, 84*4, 10*4, -50);
+		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
+        scroller = new ScrollHandler(300);
 	}
 
     public void update(float delta) {
     	runActor.update(delta);
-    	if(largePlatform1.collides(runActor))
+    	scroller.update(delta);
+
+    	
+    	if(scroller.getLargePlatform1().collides(runActor))
     		runActor.stop();
+    	else
+    		runActor.fall();
     }
 
     public RunActor getRunActor() {
@@ -26,7 +31,7 @@ public class GameWorld {
     }
     
     public Platform getLargePlatform1(){
-    	return largePlatform1;
+    	return scroller.getLargePlatform1();
     }
 
 }
