@@ -22,14 +22,15 @@ public class GameRenderer {
     private RunActor runActor;
 
     private Platform largePlatform1;
+    private Platform ground;
 
     
     private int midPointY;
     @SuppressWarnings("unused")
 	private int gameHeight;
     
-    public static TextureRegion bg, ground, characterStepOne, characterStepTwo,
-	platformSmall, platformMedium, platformLarge;
+    public static TextureRegion bg, characterStepOne, characterStepTwo,
+	platformSmall, platformMedium, platformLarge, groundTexture;
     private Animation runningAnimation;
     
 	public GameRenderer(GameWorld world, int gameHeight, int midPointy) {
@@ -80,15 +81,27 @@ public class GameRenderer {
         batcher.draw(bg, 0, midPointY+160, 960, 280);
         
         // Re-enable blending for the character -JTO
-        batcher.enableBlending();
+        batcher.enableBlending(); 
         
         //Draw the main character animation -JTO
         batcher.draw(runningAnimation.getKeyFrame(runTime), 
         		runActor.getX(), runActor.getY(),  runActor.getWidth()*4, runActor.getHeight()*4);
         
 
+        // Draw the large platform -JTO
         batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 
         		largePlatform1.getWidth(), largePlatform1.getHeight());
+        
+        
+        // Draw the ground to test, no collision yet
+        batcher.draw(groundTexture, ground.getX(), ground.getY(), ground.getWidth(), ground.getHeight());
+        //drawing ground hack to test something -JTO
+        batcher.draw(groundTexture, ground.getTailX(), ground.getY(), ground.getWidth(), ground.getHeight());
+        // worked, but creates a jagged line and wont give collision detection. I'd like to avoid creating a 
+        // Separate class for the ground, with a front and back ground platform swapping places or something.
+        // I think the above concept with the resetting can work instead with a handmade second ground platform
+        // tied to getTail -JTO
+        
       
         batcher.end();
         
@@ -109,12 +122,14 @@ public class GameRenderer {
 	private void initGameObjects() {
         runActor = myWorld.getRunActor();
         largePlatform1 = myWorld.getLargePlatform1();
+        ground = myWorld.getGround();
     }
 
     private void initAssets() {
         bg = AssetLoader.bg;
         runningAnimation = AssetLoader.runningAnimation;
         platformLarge = AssetLoader.platformLarge;
+        groundTexture = AssetLoader.ground;
     }
 
 }

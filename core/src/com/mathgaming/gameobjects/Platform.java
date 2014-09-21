@@ -15,6 +15,7 @@ public class Platform {
 	
 	protected Rectangle boundingBox;
 	
+	
 	public Platform(float x, float y, int width, int height, float scrollSpeed){
 		position = new Vector2(x,y);
 		velocity = new Vector2(scrollSpeed, 0);
@@ -27,7 +28,7 @@ public class Platform {
 	public void update(float delta) {
 		position.add(velocity.cpy().scl(delta));
 		boundingBox.x = position.x;
-		boundingBox.y = position.y;
+		boundingBox.y = position.y-5; // subtracting 5 fixed an error, am I off by 5 somewhere? -JTO //Still not perfect -JTO
 		
 		if(position.x + width < 0)
 			isScrolledLeft = true;
