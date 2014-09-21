@@ -84,13 +84,16 @@ public class GameRenderer {
         		runActor.getX(), runActor.getY(),  runActor.getWidth()*4, runActor.getHeight()*4);
         
         //test
-        batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 84*4, 10*4);
+        batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 
+        		largePlatform1.getWidth(), largePlatform1.getHeight());
         
         batcher.end();
         
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
+        // Debugging -JTO
         //shapeRenderer.rect(runActor.getBoundingBox().x, runActor.getBoundingBox().y, 15*4, 20*4);
+        //shapeRenderer.rect(largePlatform1.getX(), largePlatform1.getY(), 84*4, 10*4);
         shapeRenderer.end();
        
 		

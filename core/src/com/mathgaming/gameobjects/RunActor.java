@@ -26,7 +26,8 @@ public class RunActor {
     }
     
     public void update(float delta){
-    	velocity.add(acceleration.cpy().scl(delta)); // Gravity
+    	if(velocity.y != 0)  // Weird hack to see if I can get it to stop on a a platform -JTO
+    		velocity.add(acceleration.cpy().scl(delta)); // Gravity
 
         if (velocity.y > 1000) {    // Terminal Velocity
             velocity.y = 1000;
@@ -35,7 +36,7 @@ public class RunActor {
         position.add(velocity.cpy().scl(delta));
         
         //set bounding box
-        boundingBox.set(position.x, position.y, position.x+15*4, position.y+20*4);
+        boundingBox.set(position.x, position.y, 15*4, 20*4);
         
     }
     

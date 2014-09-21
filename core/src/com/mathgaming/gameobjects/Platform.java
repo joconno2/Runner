@@ -58,9 +58,18 @@ public class Platform {
 		return boundingBox;
 	}
 	
+	// Terrifying mess used to debug. Leaving it in until collision doesnt suck -JTO
 	public boolean collides(RunActor runActor){
-		if(position.x < runActor.getX()+runActor.getWidth())
-			return Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox());
+		if(position.x <= runActor.getX()+runActor.getWidth()){
+			if(Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox())){
+				//System.out.print(Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox()));
+				//System.out.print("- x: "+getBoundingBox().x+" - y:"+getBoundingBox().y+
+				//		" - height: "+getBoundingBox().height+" - width: "+getBoundingBox().width+"\n");
+				//System.out.println("actor - x: "+runActor.getBoundingBox().x+" - y:"+runActor.getBoundingBox().y+
+				//		" - height: "+runActor.getBoundingBox().height+ " - width: "+runActor.getBoundingBox().width);
+				return Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox());
+			}
+		}
 		return false;
 	}
 	
