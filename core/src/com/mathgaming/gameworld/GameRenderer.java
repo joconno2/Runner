@@ -33,7 +33,7 @@ public class GameRenderer {
 	platformSmall, platformMedium, platformLarge, groundTexture;
     private Animation runningAnimation;
     
-	public GameRenderer(GameWorld world, int gameHeight, int midPointy) {
+	public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
 		myWorld = world;
 		
 		this.gameHeight = gameHeight;
