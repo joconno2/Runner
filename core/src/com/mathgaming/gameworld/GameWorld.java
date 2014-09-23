@@ -14,14 +14,15 @@ public class GameWorld {
 	}
 
     public void update(float delta) {
-    	runActor.update(delta);
-    	scroller.update(delta);
-
-    	
     	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor))
     		runActor.stop();
     	else
     		runActor.fall();
+    	
+    	runActor.update(delta);
+    	scroller.update(delta);
+
+    	
     	
     	
     }
