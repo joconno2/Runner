@@ -1,28 +1,40 @@
 package com.mathgaming.gameworld;
 
-import java.util.Random;
-
-import com.badlogic.gdx.math.Rectangle;
+import com.mathgaming.gameobjects.RunActor;
+import com.mathgaming.gameobjects.Platform;
+import com.mathgaming.gameobjects.ScrollHandler;
 
 public class GameWorld {
-
-	private Rectangle rect = new Rectangle(40, 20, 17, 12);
-	private Random r = new Random();
+	private RunActor runActor;
+	private ScrollHandler scroller;
+	
+	public GameWorld(int midpointY){
+		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
+        scroller = new ScrollHandler(300); 
+	}
 
     public void update(float delta) {
+    	runActor.update(delta);
+    	scroller.update(delta);
+
     	
-    	rect.x--;
-        if (rect.x < -17) {
-            rect.x = 136;
-            rect.y = r.nextInt(200);
-        }
-        
-        
-        
+    	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor))
+    		runActor.stop();
+    	else
+    		runActor.fall();
+    	
+    	
     }
 
-    public Rectangle getRect() {
-        return rect;
+    public RunActor getRunActor() {
+        return runActor;
+    }
+    
+    public Platform getLargePlatform1(){
+    	return scroller.getLargePlatform1();
     }
 
+    public Platform getGround(){
+    	return scroller.getGround();
+    }
 }
