@@ -14,7 +14,8 @@ public class GameWorld {
 	}
 
     public void update(float delta) {
-    	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor))
+    	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor)
+    			|| scroller.getGround2().collides(runActor))
     		runActor.stop();
     	else
     		runActor.fall();
@@ -37,5 +38,9 @@ public class GameWorld {
 
     public Platform getGround(){
     	return scroller.getGround();
+    }
+    
+    public Platform getGround2(){
+    	return scroller.getGround2();
     }
 }
