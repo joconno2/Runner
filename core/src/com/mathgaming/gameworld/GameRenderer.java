@@ -22,7 +22,7 @@ public class GameRenderer {
     private RunActor runActor;
 
     private Platform largePlatform1;
-    private Platform ground;
+    private Platform ground, ground2;
 
     
     private int midPointY;
@@ -96,7 +96,7 @@ public class GameRenderer {
         // Draw the ground to test, no collision yet
         batcher.draw(groundTexture, ground.getX(), ground.getY(), ground.getWidth(), ground.getHeight());
         //drawing ground hack to test something -JTO
-        batcher.draw(groundTexture, ground.getTailX(), ground.getY(), ground.getWidth(), ground.getHeight());
+        batcher.draw(groundTexture, ground2.getX(), ground2.getY(), ground2.getWidth(), ground2.getHeight());
         // worked, but creates a jagged line and wont give collision detection. I'd like to avoid creating a 
         // Separate class for the ground, with a front and back ground platform swapping places or something.
         // I think the above concept with the resetting can work instead with a handmade second ground platform
@@ -123,6 +123,7 @@ public class GameRenderer {
         runActor = myWorld.getRunActor();
         largePlatform1 = myWorld.getLargePlatform1();
         ground = myWorld.getGround();
+        ground2 = myWorld.getGround2();
     }
 
     private void initAssets() {

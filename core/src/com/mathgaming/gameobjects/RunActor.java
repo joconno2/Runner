@@ -16,6 +16,8 @@ public class RunActor {
     
     private Rectangle boundingBox;
     
+    private boolean airborne;
+    
     public RunActor(float x, float y, int width, int height){
     	this.width = width;
         this.height = height;
@@ -43,11 +45,17 @@ public class RunActor {
     }
     
     public void stop(){
-    	velocity.y = 0;
+    	if(velocity.y > 0){
+    		velocity.y = 0;
+    		airborne = false;
+    	}
     }
     
     public void jump(){
-    	velocity.y = -600;
+    	if(!airborne){
+    		velocity.y = -600;
+    		airborne = true;
+    	}
     }
 	
     public float getX() {
