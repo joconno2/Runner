@@ -78,7 +78,7 @@ public class GameRenderer {
         
         // Disable transparency for performance -JTO
         batcher.disableBlending();
-        batcher.draw(bg, 0, midPointY+160, 960, 280);
+        batcher.draw(bg, 0, midPointY+60, 960, 280);
         
         // Re-enable blending for the character -JTO
         batcher.enableBlending(); 
