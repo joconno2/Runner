@@ -10,9 +10,10 @@ public class AssetLoader {
 
 	public static Texture texture;
 	public static TextureRegion bg, ground, characterStepOne, characterStepTwo,
-								platformSmall, platformMedium, platformLarge;
+								platformSmall, platformMedium, platformLarge,
+								beeUp, beeDown;
 	
-	public static Animation runningAnimation;
+	public static Animation runningAnimation, beeAnimation;
 	
 	public static void load(){
 		
@@ -38,10 +39,21 @@ public class AssetLoader {
 		characterStepTwo = new TextureRegion(texture, 233, 64, 16, 21);
 		characterStepTwo.flip(false, true);
 		
+		// Import the Bee sprites -JTO
+		beeUp = new TextureRegion(texture, 88, 89, 20, 14);
+		beeUp.flip(false, true);
+		beeDown = new TextureRegion(texture, 109, 89, 20, 14);
+		beeDown.flip(false, true);
+		
 		// build the runnning animation -JTO
 		TextureRegion[] running = {characterStepOne, characterStepTwo};
 		runningAnimation = new Animation(0.12f, running); //0.1f is the speed of animation -JTO
 		runningAnimation.setPlayMode(Animation.PlayMode.LOOP);
+		
+		// build the bee animation -JTO
+		TextureRegion[] beeFly = {beeUp, beeDown};
+		beeAnimation = new Animation(0.3f, beeFly);
+		beeAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
 		
 		 

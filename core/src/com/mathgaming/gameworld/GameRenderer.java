@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.mathgaming.gameobjects.Enemy;
 import com.mathgaming.gameobjects.Platform;
 import com.mathgaming.gameobjects.RunActor;
 import com.mathgaming.rhelpers.AssetLoader;
@@ -23,6 +24,8 @@ public class GameRenderer {
 
     private Platform largePlatform1;
     private Platform ground, ground2;
+    
+    private Enemy bee;
 
     
     private int midPointY;
@@ -31,7 +34,7 @@ public class GameRenderer {
     
     public static TextureRegion bg, characterStepOne, characterStepTwo,
 	platformSmall, platformMedium, platformLarge, groundTexture;
-    private Animation runningAnimation;
+    private Animation runningAnimation, beeAnimation;
     
 	public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
 		myWorld = world;
@@ -92,6 +95,9 @@ public class GameRenderer {
         batcher.draw(platformLarge, largePlatform1.getX(), largePlatform1.getY(), 
         		largePlatform1.getWidth(), largePlatform1.getHeight());
         
+        // Draw the bee animation -JTO
+        batcher.draw(beeAnimation.getKeyFrame(runTime),
+        		bee.getX(), bee.getY(), bee.getWidth(), bee.getHeight());
         
         // Draw the ground to test, no collision yet
         batcher.draw(groundTexture, ground.getX(), ground.getY(), ground.getWidth(), ground.getHeight());
@@ -124,6 +130,7 @@ public class GameRenderer {
         largePlatform1 = myWorld.getLargePlatform1();
         ground = myWorld.getGround();
         ground2 = myWorld.getGround2();
+        bee = myWorld.getBee();
     }
 
     private void initAssets() {
@@ -131,6 +138,7 @@ public class GameRenderer {
         runningAnimation = AssetLoader.runningAnimation;
         platformLarge = AssetLoader.platformLarge;
         groundTexture = AssetLoader.ground;
+        beeAnimation = AssetLoader.beeAnimation;
     }
 
 }
