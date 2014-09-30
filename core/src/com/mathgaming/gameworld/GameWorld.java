@@ -1,5 +1,6 @@
 package com.mathgaming.gameworld;
 
+import com.mathgaming.gameobjects.Enemy;
 import com.mathgaming.gameobjects.RunActor;
 import com.mathgaming.gameobjects.Platform;
 import com.mathgaming.gameobjects.ScrollHandler;
@@ -42,5 +43,10 @@ public class GameWorld {
     
     public Platform getGround2(){
     	return scroller.getGround2();
+    }
+    
+    public Enemy getBee(){
+    	return scroller.getBee();
+
     }
 }

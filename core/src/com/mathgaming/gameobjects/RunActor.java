@@ -80,6 +80,6 @@ public class RunActor {
 
 	public void fall() {
 		if(velocity.y == 0)
-			velocity.y += 100;
+			velocity.y += 300;
 	}
 }
