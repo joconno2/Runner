@@ -14,7 +14,7 @@ public class ScrollHandler {
 	public ScrollHandler(float yPos){
 	
 		largePlatform1 = new Platform(10, 360, 84*4, 10*4, DEFAULT_SCROLL_SPEED); //last arg is SCROLLSPEED< add constant -JTO
-		bee = new Enemy(200,200, 20*4, 14*4, 3, 0f);
+		bee = new Enemy(200,200, 20*4, 14*4, 3, DEFAULT_SCROLL_SPEED - 200); // Enemy should move slightly faster than everything else
 		ground = new Platform(0, 560, 250*4, 20*4, DEFAULT_SCROLL_SPEED - 110); // Need the foreground to run faster than background for a parallax effect -JTO
 		ground2 = new Platform(ground.getTailX()-OFFSET, 560, 250*4, 20*4, DEFAULT_SCROLL_SPEED - 110); // The second stitched ground JTO
 	}
@@ -24,9 +24,14 @@ public class ScrollHandler {
 		ground.update(delta);
 		ground2.update(delta);
 		bee.update(delta);
+		
+		int platformVal = randomY.nextInt(400)+100;
 
 		if(largePlatform1.isScrolledLeft())
-			largePlatform1.reset(960,randomY.nextInt(400)+100); // 400+100 to give room in the top and the bottom of screen -JTO
+			largePlatform1.reset(960,platformVal); // 400+100 to give room in the top and the bottom of screen -JTO
+		
+		if(bee.isScrolledLeft())
+			bee.reset(960, platformVal-100);
 		
 		if(ground.isScrolledLeft())
 			ground.reset(ground2.getTailX()-OFFSET, 560);

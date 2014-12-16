@@ -15,6 +15,7 @@ public class Enemy {
 	private Rectangle boundingBox;
 
 	private boolean isAlive;
+	private boolean isScrolledLeft;
 	
 	public Enemy(float x, float y, int width, int height, int health, float scrollSpeed){
 		this.width = width;
@@ -24,6 +25,7 @@ public class Enemy {
 		isAlive = true;
 		velocity = new Vector2(scrollSpeed,0);
 		boundingBox = new Rectangle();
+		isScrolledLeft = false;
 	}
 	
 	public void update(float delta){
@@ -32,10 +34,16 @@ public class Enemy {
 		boundingBox.x = position.x;
 		boundingBox.y = position.y-5;
 		
+		if(position.x + width < 0)
+			isScrolledLeft = true;
 		
 	}
 		
-	
+	public void reset(float newX, float newY){
+		position.x = newX;
+		position.y = newY;
+		isScrolledLeft = false;
+	}
 	
 	public Rectangle getBoundingBox(){
 		return boundingBox;
@@ -62,6 +70,10 @@ public class Enemy {
 	
 	public boolean isAlive(){
 		return isAlive;
+	}
+
+	public boolean isScrolledLeft(){
+		return isScrolledLeft;
 	}
 
 }
