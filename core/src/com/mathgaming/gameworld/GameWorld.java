@@ -21,10 +21,12 @@ public class GameWorld {
     	else
     		runActor.fall();
     	
+    	if(scroller.getBee().collides(runActor))
+    		System.out.print("BEE COLLISION\n");
+    	
     	runActor.update(delta);
     	scroller.update(delta);
-
-    	
+	
     	
     	
     }

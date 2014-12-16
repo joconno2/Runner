@@ -1,5 +1,6 @@
 package com.mathgaming.gameobjects;
 
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -74,6 +75,15 @@ public class Enemy {
 
 	public boolean isScrolledLeft(){
 		return isScrolledLeft;
+	}
+	
+	public boolean collides(RunActor runActor){
+		if(position.x <= runActor.getX()+runActor.getWidth()){
+			if(Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox())){
+				return Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox());
+			}
+		}
+		return false;
 	}
 
 }

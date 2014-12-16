@@ -38,11 +38,8 @@ public class ScrollHandler {
 		
 		if(ground2.isScrolledLeft())
 			ground2.reset(ground.getTailX()-OFFSET, 560);
-		
 			
 			
-		
-		
 	}
 
 	public Platform getLargePlatform1(){
