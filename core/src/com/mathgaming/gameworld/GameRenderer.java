@@ -108,6 +108,14 @@ public class GameRenderer {
         // I think the above concept with the resetting can work instead with a handmade second ground platform
         // tied to getTail -JTO
         
+        
+        // Convert integer into String
+        String score = myWorld.getScore() + "";
+
+        // Draw shadow first
+        AssetLoader.shadow.draw(batcher, "" + myWorld.getScore(), 460 - (3 * score.length()), 12);
+        // Draw text
+        AssetLoader.font.draw(batcher, "" + myWorld.getScore(), 460 - (3 * score.length() - 1), 11);
       
         batcher.end();
         

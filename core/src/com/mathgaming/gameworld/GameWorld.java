@@ -8,10 +8,11 @@ import com.mathgaming.gameobjects.ScrollHandler;
 public class GameWorld {
 	private RunActor runActor;
 	private ScrollHandler scroller;
+	private int score = 0;
 	
 	public GameWorld(int midpointY){
 		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
-        scroller = new ScrollHandler(300); 
+        scroller = new ScrollHandler(this, 300); 
 	}
 
     public void update(float delta) {
@@ -50,5 +51,13 @@ public class GameWorld {
     public Enemy getBee(){
     	return scroller.getBee();
 
+    }
+    
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore(int increment){
+    	score += increment;
     }
 }

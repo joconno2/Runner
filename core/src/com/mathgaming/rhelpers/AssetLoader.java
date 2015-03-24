@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
@@ -14,6 +15,8 @@ public class AssetLoader {
 								beeUp, beeDown;
 	
 	public static Animation runningAnimation, beeAnimation;
+	
+	public static BitmapFont font, shadow;
 	
 	public static void load(){
 		
@@ -55,13 +58,19 @@ public class AssetLoader {
 		beeAnimation = new Animation(0.3f, beeFly);
 		beeAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 		
-		
+		// build the font -JTO
+		font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
+		font.setScale(0.85f, -0.85f);
+		shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
+		shadow.setScale(0.85f, -0.85f);
 		 
 		
 	}
 	
 	public static void dispose(){
 		texture.dispose();
+		font.dispose();
+		shadow.dispose();
 	}
 	
 }
