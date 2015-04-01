@@ -33,7 +33,7 @@ public class GameRenderer {
 	private int gameHeight;
     
     public static TextureRegion bg, characterStepOne, characterStepTwo,
-	platformSmall, platformMedium, platformLarge, groundTexture;
+	platformSmall, platformMedium, platformLarge, groundTexture, fullHeart, emptyHeart;
     private Animation runningAnimation, beeAnimation;
     
 	public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
@@ -99,6 +99,26 @@ public class GameRenderer {
         batcher.draw(beeAnimation.getKeyFrame(runTime),
         		bee.getX(), bee.getY(), bee.getWidth(), bee.getHeight());
         
+        //Draw the hearts -JTO
+        //batcher.draw(heartAnimation.getKeyFrame(runTime), 100, 100, 50, 50); example anim
+        if(myWorld.getHits() == 0){
+        	batcher.draw(fullHeart, 50, 50, 50, 50);
+        	batcher.draw(fullHeart, 105, 50, 50, 50);
+        	batcher.draw(fullHeart, 160, 50, 50, 50);
+        }else if(myWorld.getHits() == 1){
+        	batcher.draw(fullHeart, 50, 50, 50, 50);
+        	batcher.draw(fullHeart, 105, 50, 50, 50);
+        	batcher.draw(emptyHeart, 160, 50, 50, 50);
+        }else if(myWorld.getHits() == 2){
+        	batcher.draw(fullHeart, 50, 50, 50, 50);
+        	batcher.draw(emptyHeart, 105, 50, 50, 50);
+        	batcher.draw(emptyHeart, 160, 50, 50, 50);
+        }else{
+        	batcher.draw(emptyHeart, 50, 50, 50, 50);
+        	batcher.draw(emptyHeart, 105, 50, 50, 50);
+        	batcher.draw(emptyHeart, 160, 50, 50, 50);
+        }
+        
         // Draw the ground to test, no collision yet
         batcher.draw(groundTexture, ground.getX(), ground.getY(), ground.getWidth(), ground.getHeight());
         //drawing ground hack to test something -JTO
@@ -147,6 +167,8 @@ public class GameRenderer {
         platformLarge = AssetLoader.platformLarge;
         groundTexture = AssetLoader.ground;
         beeAnimation = AssetLoader.beeAnimation;
+        fullHeart = AssetLoader.fullHeart;
+        emptyHeart = AssetLoader.emptyHeart;
     }
 
 }

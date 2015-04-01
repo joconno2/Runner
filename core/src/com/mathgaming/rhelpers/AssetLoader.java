@@ -12,9 +12,9 @@ public class AssetLoader {
 	public static Texture texture;
 	public static TextureRegion bg, ground, characterStepOne, characterStepTwo,
 								platformSmall, platformMedium, platformLarge,
-								beeUp, beeDown;
+								beeUp, beeDown, fullHeart, halfHeart, emptyHeart;
 	
-	public static Animation runningAnimation, beeAnimation;
+	public static Animation runningAnimation, beeAnimation, heartAnimation;
 	
 	public static BitmapFont font, shadow;
 	
@@ -63,6 +63,18 @@ public class AssetLoader {
 		font.setScale(0.85f, -0.85f);
 		shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
 		shadow.setScale(0.85f, -0.85f);
+		
+		// Hearts
+		fullHeart = new TextureRegion(texture, 160, 89, 16, 15);
+		fullHeart.flip(false, true);
+		halfHeart = new TextureRegion(texture, 178, 89, 16, 15);
+		halfHeart.flip(false, true);
+		emptyHeart = new TextureRegion(texture, 196, 89, 16, 15);
+		emptyHeart.flip(false, true);
+		
+		TextureRegion[] heartDamage = {fullHeart, halfHeart, emptyHeart};
+		heartAnimation = new Animation(0.3f, heartDamage);
+		heartAnimation.setPlayMode(Animation.PlayMode.LOOP);
 		 
 		
 	}
