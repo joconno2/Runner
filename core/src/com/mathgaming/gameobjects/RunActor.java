@@ -38,7 +38,7 @@ public class RunActor {
         position.add(velocity.cpy().scl(delta));
         
         //set bounding box
-        boundingBox.set(position.x, position.y, position.x+15*4, position.y+20*4);
+        //boundingBox.set(position.x, position.y, position.x+15*4, position.y+20*4);
         
         boundingBox.set(position.x, position.y, 15*4, 20*4);
         

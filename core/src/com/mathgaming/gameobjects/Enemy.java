@@ -32,8 +32,8 @@ public class Enemy {
 	public void update(float delta){
 		position.add(velocity.cpy().scl(delta));
 		
-		boundingBox.x = position.x;
-		boundingBox.y = position.y-5;
+		//set bounding box
+        boundingBox.set(position.x+5, position.y+5, 17*4, 13*4);
 		
 		if(position.x + width < 0)
 			isScrolledLeft = true;
@@ -80,7 +80,7 @@ public class Enemy {
 	public boolean collides(RunActor runActor){
 		if(position.x <= runActor.getX()+runActor.getWidth()){
 			if(Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox())){
-				return Intersector.overlaps(runActor.getBoundingBox(), getBoundingBox());
+				return true;
 			}
 		}
 		return false;

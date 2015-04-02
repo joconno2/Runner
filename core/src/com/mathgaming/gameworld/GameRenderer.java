@@ -142,9 +142,8 @@ public class GameRenderer {
         shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.setColor(Color.RED);
 
-        //shapeRenderer.rect(runActor.getBoundingBox().x, runActor.getBoundingBox().y, 15*4, 20*4);
-
         // Debugging -JTO
+        //shapeRenderer.rect(bee.getBoundingBox().x+5, bee.getBoundingBox().y+5, 17*4, 13*4);
         //shapeRenderer.rect(runActor.getBoundingBox().x, runActor.getBoundingBox().y, 15*4, 20*4);
         //shapeRenderer.rect(largePlatform1.getX(), largePlatform1.getY(), 84*4, 10*4);
 

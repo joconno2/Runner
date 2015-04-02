@@ -10,6 +10,7 @@ public class GameWorld {
 	private ScrollHandler scroller;
 	private int score = 0;
 	private int hits = 0;
+	private boolean safe = true;
 	
 	public GameWorld(int midpointY){
 		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
@@ -23,15 +24,16 @@ public class GameWorld {
     	else
     		runActor.fall();
     	
+    	// Checks to see if player is in contact with bee, only allows one hit at a time -JTO
     	if(scroller.getBee().collides(runActor)){
-    		System.out.print("BEE COLLISION\n");
-    		addHit();
-    	}
+    		if(safe == true)
+    			addHit();
+    		safe = false;
+    	}else
+    		safe = true;
     	
     	runActor.update(delta);
     	scroller.update(delta);
-	
-    	
     	
     }
 
