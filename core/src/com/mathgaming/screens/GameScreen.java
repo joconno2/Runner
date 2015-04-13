@@ -23,7 +23,7 @@ public class GameScreen implements Screen{
 		world = new GameWorld(midPointY);  // I feel like I forgot to capitalize P somewhere.. -JTO
 		renderer = new GameRenderer(world, (int) gameHeight, midPointY);
 		
-		Gdx.input.setInputProcessor(new InputHandler(world.getRunActor())); // Set up the Input Handler -JTO
+		Gdx.input.setInputProcessor(new InputHandler(world)); // Set up the Input Handler -JTO
 	}
 	
 	@Override

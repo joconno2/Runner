@@ -85,5 +85,11 @@ public class Enemy {
 		}
 		return false;
 	}
-
+	
+	public void onRestart(int newX, int newY){
+		position.x = newX;
+		position.y = newY;
+		isScrolledLeft = false;
+	
+	}
 }

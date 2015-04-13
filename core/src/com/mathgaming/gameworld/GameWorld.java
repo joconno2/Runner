@@ -11,13 +11,35 @@ public class GameWorld {
 	private int score = 0;
 	private int hits = 0;
 	private boolean safe = true;
+	private GameState currentState;
 	
+    public enum GameState{
+    	READY, RUNNING, GAMEOVER
+    }
+
 	public GameWorld(int midpointY){
 		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
         scroller = new ScrollHandler(this, 300); 
+        currentState = GameState.READY;
 	}
 
-    public void update(float delta) {
+	public void update(float delta){
+		switch (currentState){
+		case READY:
+			updateReady(delta);
+			break;
+		case RUNNING:
+			default:
+				updateRunning(delta);
+				break;
+		}
+	}
+	
+	public void updateReady(float delta){
+		
+	}
+	
+    public void updateRunning(float delta) {
     	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor)
     			|| scroller.getGround2().collides(runActor))
     		runActor.stop();
@@ -37,7 +59,6 @@ public class GameWorld {
     	
     }
 
-  
 
 	public RunActor getRunActor() {
         return runActor;
@@ -57,7 +78,6 @@ public class GameWorld {
     
     public Enemy getBee(){
     	return scroller.getBee();
-
     }
     
     public int getScore() {
@@ -75,4 +95,26 @@ public class GameWorld {
     private void addHit() {
 		hits++;
 	}
+    
+    public boolean isReady(){
+    	return currentState == GameState.READY;
+    }
+    
+    public void start(){
+    	currentState = GameState.RUNNING;	
+    }
+    
+    public void restart(){
+    	currentState = GameState.READY;
+    	score = 0;
+    	runActor.onRestart(); // Test this
+    	scroller.onRestart();
+    	currentState = GameState.READY;	
+    }
+    
+    public boolean isGameOver(){
+    	return currentState == GameState.GAMEOVER;
+    }
+    
+    
 }

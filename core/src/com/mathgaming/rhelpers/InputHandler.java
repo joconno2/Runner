@@ -4,20 +4,30 @@ package com.mathgaming.rhelpers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.mathgaming.gameobjects.RunActor;
+import com.mathgaming.gameworld.GameWorld;
 
 public class InputHandler implements InputProcessor {
 	
 	private RunActor actor;
+	private GameWorld myWorld;
 	
-	public InputHandler(RunActor givenActor){
-		actor = givenActor;
+	public InputHandler(GameWorld myWorld){
+		this.myWorld = myWorld;
+		actor = myWorld.getRunActor();
 	}
 	
 
 	@Override
 	public boolean keyDown(int keycode) {
 		if(keycode == 62) // 62 is spacebar -JTO
+			if(myWorld.isReady())
+				myWorld.start();
+			
 			actor.jump(); // Calls jump on main character when spacebar is hit -JTO
+			
+			if(myWorld.isGameOver())
+				myWorld.restart();
+				
 		return true;
 	}
 

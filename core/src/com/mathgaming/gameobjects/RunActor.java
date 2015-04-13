@@ -82,4 +82,13 @@ public class RunActor {
 		if(velocity.y == 0)
 			velocity.y += 300;
 	}
+	
+	public void onRestart(){
+		position.x = 120.0f;
+		position.y = 140.0f;
+		acceleration.x = 0;
+		acceleration.y = fGdown;
+		velocity.x = 0;
+		velocity.y= 0;
+	}
 }

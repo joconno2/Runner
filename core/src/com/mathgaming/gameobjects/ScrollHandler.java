@@ -69,4 +69,11 @@ public class ScrollHandler {
 		gameWorld.addScore(increment);
 	}
 	
+	public void onRestart(){
+		largePlatform1.reset(960,randomY.nextInt(400)+100);
+		bee.onRestart(200,200);
+		ground.reset(0, 560);
+		ground2.reset(ground.getTailX()-OFFSET, 560);
+	}
+	
 }
