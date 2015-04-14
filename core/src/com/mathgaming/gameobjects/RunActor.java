@@ -85,7 +85,7 @@ public class RunActor {
 	
 	public void onRestart(){
 		position.x = 120.0f;
-		position.y = 140.0f;
+		position.y = 440.0f;
 		acceleration.x = 0;
 		acceleration.y = fGdown;
 		velocity.x = 0;

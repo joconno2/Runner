@@ -19,15 +19,16 @@ public class InputHandler implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		if(keycode == 62) // 62 is spacebar -JTO
+		if(keycode == 66){ // 66 is enter -JTO
 			if(myWorld.isReady())
 				myWorld.start();
 			
-			actor.jump(); // Calls jump on main character when spacebar is hit -JTO
-			
 			if(myWorld.isGameOver())
 				myWorld.restart();
-				
+		
+		}else if(keycode == 62)
+			actor.jump();// Calls jump on main character when spacebar is hit -JTO
+		
 		return true;
 	}
 

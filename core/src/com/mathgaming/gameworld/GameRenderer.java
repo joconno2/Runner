@@ -137,6 +137,19 @@ public class GameRenderer {
         // Draw text
         AssetLoader.font.draw(batcher, "" + myWorld.getScore(), 460 - (3 * score.length() - 1), 11);
       
+        if(myWorld.isReady()){
+        	// Draw shadow first
+            AssetLoader.shadow.draw(batcher, "PRESS ENTER TO START", 200, 180); // Should make this not hardcoded
+            // Draw text
+            AssetLoader.font.draw(batcher, "PRESS ENTER TO START", 200, 170);
+        }
+        
+        if(myWorld.isGameOver()){
+            AssetLoader.shadow.draw(batcher, "GAME OVER", 300, 150); // Should make this not hardcoded
+            AssetLoader.font.draw(batcher, "GAME OVER", 300, 140);
+        }
+        
+        
         batcher.end();
         
         shapeRenderer.begin(ShapeType.Filled);

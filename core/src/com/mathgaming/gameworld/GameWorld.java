@@ -18,7 +18,7 @@ public class GameWorld {
     }
 
 	public GameWorld(int midpointY){
-		runActor = new RunActor(120.0f,140.0f,15,20); //Starts the main character and gives it a size -JTO
+		runActor = new RunActor(120.0f,440.0f,15,20); //Starts the main character and gives it a size -JTO
         scroller = new ScrollHandler(this, 300); 
         currentState = GameState.READY;
 	}
@@ -40,22 +40,27 @@ public class GameWorld {
 	}
 	
     public void updateRunning(float delta) {
-    	if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor)
-    			|| scroller.getGround2().collides(runActor))
-    		runActor.stop();
-    	else
-    		runActor.fall();
-    	
-    	// Checks to see if player is in contact with bee, only allows one hit at a time -JTO
-    	if(scroller.getBee().collides(runActor)){
-    		if(safe == true)
-    			addHit();
-    		safe = false;
-    	}else
-    		safe = true;
-    	
-    	runActor.update(delta);
-    	scroller.update(delta);
+    	if(currentState != GameState.GAMEOVER){
+    		if(hits > 2)
+    			currentState = GameState.GAMEOVER;
+
+    		if(scroller.getLargePlatform1().collides(runActor) || scroller.getGround().collides(runActor)
+    				|| scroller.getGround2().collides(runActor))
+    			runActor.stop();
+    		else
+    			runActor.fall();
+
+    		// Checks to see if player is in contact with bee, only allows one hit at a time -JTO
+    		if(scroller.getBee().collides(runActor)){
+    			if(safe == true)
+    				addHit();
+    			safe = false;
+    		}else
+    			safe = true;
+
+    		runActor.update(delta);
+    		scroller.update(delta);
+    	}
     	
     }
 
@@ -107,6 +112,7 @@ public class GameWorld {
     public void restart(){
     	currentState = GameState.READY;
     	score = 0;
+    	hits = 0;
     	runActor.onRestart(); // Test this
     	scroller.onRestart();
     	currentState = GameState.READY;	
